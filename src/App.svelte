@@ -35,13 +35,13 @@
 
 <style>
   main {
+    max-width: 1024px;
     width: 100%;
     margin: 0 auto;
   }
   header {
     position: fixed;
     top: 0;
-    left: 0;
     background-color: #fff;
     width: 100%;
     z-index: 9999;
