@@ -40,10 +40,11 @@
     margin: 0 auto;
   }
   header {
+    max-width: 1024px;
+    width: 100%;
     position: fixed;
     top: 0;
     background-color: #fff;
-    width: 100%;
     z-index: 9999;
   }
   header > section {
