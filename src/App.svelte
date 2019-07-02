@@ -5,8 +5,7 @@
   let page = 1;
   let last = new Date();
 
-  $: lasttime =
-    last.getHours() + ":" + last.getMinutes() + ":" + last.getSeconds();
+  $: lasttime = last.toLocaleDateString() + " " + last.toLocaleTimeString();
 
   function getpage(page) {
     news = [];
@@ -51,7 +50,7 @@
     padding: 1rem;
   }
   header > section > h1 > span {
-    font-weight: 100;
+    font-weight:normal;
     font-size: 0.8rem;
   }
   header > section i {
@@ -69,6 +68,7 @@
     border: 0;
     background-color: #454d66;
     color: #d9d872;
+    padding: 4px;
     cursor: pointer;
   }
   button:active {
