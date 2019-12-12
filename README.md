@@ -2,6 +2,8 @@
 
 This is a mobile PWA project to demonstrate a real use case of Svelte.
 
+![Screenshot](screenshot.png)
+
 *Requirements : [Node.js](https://nodejs.org).*
 
 Install dependencies :
