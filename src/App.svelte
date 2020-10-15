@@ -38,31 +38,37 @@
     width: 100%;
     margin: 0 auto;
   }
-  header {
+  header, footer {
     max-width: 1024px;
     width: 100%;
     position: fixed;
-    top: 0;
     background-color: #fff;
     z-index: 9999;
   }
-  header > section {
-    padding: 1rem;
+  header {
+    top: 0;
+  }
+  footer {
+    bottom: 0;
+  }
+  header > section > h1 {
+    margin:10px;
   }
   header > section > h1 > span {
     font-weight:normal;
     font-size: 0.8rem;
   }
-  header > section i {
+  footer > section i {
     cursor: pointer;
   }
-  header > section > .toolbar {
+  footer > section > .toolbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
+    margin: 10px;
   }
   main > section {
-    padding-top: 8.5rem;
+    padding: 3.5rem 0;
   }
   button {
     border: 0;
@@ -87,6 +93,15 @@
           HN Reader
           <span>at {lasttime}</span>
         </h1>
+      </section>
+    </header>
+    <section>
+      {#each news as item (item.id)}
+        <NewsItem {item} />
+      {/each}
+    </section>
+    <footer>
+      <section>
         <div class="toolbar">
           <span>
             Page {page}
@@ -96,17 +111,12 @@
             <button on:click={next}>
               <i class="icono-caretRight" />
             </button>
+            <button on:click={reload}>
+              <i class="icono-reset" />
+            </button>
           </span>
-          <button on:click={reload}>
-            <i class="icono-reset" />
-          </button>
         </div>
       </section>
-    </header>
-    <section>
-      {#each news as item (item.id)}
-        <NewsItem {item} />
-      {/each}
-    </section>
+    </footer>
   </main>
 {/if}
