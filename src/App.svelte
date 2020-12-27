@@ -1,7 +1,41 @@
+{#if news}
+  <main>
+    <header>
+      <section>
+        <h1> <i class="icono-infinity" /> HN Reader <span>at {lasttime}</span> </h1>
+      </section>
+      <section>
+        {#each tags as t} 
+          <button on:click={() => changetag(t)} class:active={t==tag}>{t}</button> 
+        {/each} 
+      </section>
+    </header>
+    <section>
+      {#each news as item (item.id)}
+        <NewsItem {item} />
+      {/each}
+    </section>
+    <footer>
+      <section>
+        <div class="toolbar">
+          <span>
+            Page {page}
+            <button on:click={prev}> <i class="icono-caretLeft" /> </button>
+            <button on:click={next}> <i class="icono-caretRight" /> </button>
+            <button on:click={reload}> <i class="icono-reset" /> </button>
+          </span>
+        </div>
+      </section>
+    </footer>
+  </main>
+{/if}
+
 <script>
   import NewsItem from "./NewsItem.svelte";
 
   let news;
+  let tag = 'news';
+  let tags = ['news', 'ask', 'newest', 'show', 'jobs', 'best'];
   let page = 1;
   let last = new Date();
 
@@ -9,12 +43,17 @@
 
   function getpage(page) {
     news = [];
-    fetch(`https://node-hnapi.herokuapp.com/news?page=` + page)
+    var url = `https://node-hnapi.herokuapp.com/` + tag + `?page=` + page;
+    fetch(url)
       .then(r => r.json())
       .then(data => {
         news = data;
       });
     last = new Date();
+  }
+  function changetag(t) {
+    tag = t;
+    reload();
   }
   function next() {
     page++;
@@ -41,7 +80,7 @@
   header, footer {
     max-width: 1024px;
     width: 100%;
-    position: fixed;
+    position: sticky;
     background-color: #fff;
     z-index: 9999;
   }
@@ -58,6 +97,13 @@
     font-weight:normal;
     font-size: 0.8rem;
   }
+  header > section > a {
+    text-decoration: none;
+    margin-right: 1em;
+  }
+  header > section > a.on {
+    background-color: #0000EE;
+  }
   footer > section i {
     cursor: pointer;
   }
@@ -68,7 +114,7 @@
     margin: 10px;
   }
   main > section {
-    padding: 3.5rem 0;
+    padding: 1.5rem 0;
   }
   button {
     border: 0;
@@ -77,46 +123,8 @@
     padding: 4px;
     cursor: pointer;
   }
-  button:active {
+  button:active, button.active {
     background-color: #009975;
-    color: #58b368;
-    cursor: wait;
+    color: #373a38;
   }
 </style>
-
-{#if news}
-  <main>
-    <header>
-      <section>
-        <h1>
-          <i class="icono-infinity" />
-          HN Reader
-          <span>at {lasttime}</span>
-        </h1>
-      </section>
-    </header>
-    <section>
-      {#each news as item (item.id)}
-        <NewsItem {item} />
-      {/each}
-    </section>
-    <footer>
-      <section>
-        <div class="toolbar">
-          <span>
-            Page {page}
-            <button on:click={prev}>
-              <i class="icono-caretLeft" />
-            </button>
-            <button on:click={next}>
-              <i class="icono-caretRight" />
-            </button>
-            <button on:click={reload}>
-              <i class="icono-reset" />
-            </button>
-          </span>
-        </div>
-      </section>
-    </footer>
-  </main>
-{/if}

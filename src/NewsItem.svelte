@@ -1,3 +1,16 @@
+<div class="flex-container">
+  <a class="main" href={item.url} target="_blank">
+    <div class="title">{item.title}</div>
+    <div class="metadata">
+      {item.time_ago} - {item.points} points
+    </div>
+    <div class="url">{item.url}</div>
+  </a>
+  <a class="comment" href={item.urlcomment} target="_blank">
+    <i class="icono-commentEmpty" /> {item.comments_count}
+  </a>
+</div>
+
 <script>
   export let item;
 
@@ -36,8 +49,9 @@
     flex-grow: 1;
     align-items: center;
     display: flex;
-    min-width: 5rem;
+    flex-direction: column;
     max-width: 5rem;
+    font-size: 0.6em;
   }
   .url {
     font-style: italic;
@@ -46,16 +60,3 @@
     text-overflow: ellipsis;
   }
 </style>
-
-<div class="flex-container">
-  <a class="main" href={item.url} target="_blank">
-    <div class="title">{item.title}</div>
-    <div class="metadata">
-      {item.time_ago} - {item.points} points
-    </div>
-    <div class="url">{item.url}</div>
-  </a>
-  <a class="comment" href={item.urlcomment} target="_blank">
-    <i class="icono-commentEmpty" /> {item.comments_count}
-  </a>
-</div>
