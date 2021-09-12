@@ -4,7 +4,7 @@
       <section>
         <h1> <i class="icono-infinity" /> HN Reader <span>at {lasttime}</span> </h1>
       </section>
-      <section>
+      <section class="toolbar">
         {#each tags as t} 
           <button on:click={() => changetag(t)} class:active={t==tag}>{t}</button> 
         {/each} 
@@ -89,6 +89,11 @@
   }
   footer {
     bottom: 0;
+  }
+  header section.toolbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   header > section > h1 > span {
     font-weight:normal;
