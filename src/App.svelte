@@ -90,9 +90,6 @@
   footer {
     bottom: 0;
   }
-  header > section > h1 {
-    margin:10px;
-  }
   header > section > h1 > span {
     font-weight:normal;
     font-size: 0.8rem;
@@ -111,7 +108,6 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    margin: 10px;
   }
   main > section {
     padding: 1.5rem 0;
@@ -120,7 +116,7 @@
     border: 0;
     background-color: #454d66;
     color: #d9d872;
-    padding: 4px;
+    padding: 16px 10px;
     cursor: pointer;
   }
   button:active, button.active {

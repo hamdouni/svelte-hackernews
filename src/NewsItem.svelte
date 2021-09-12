@@ -42,11 +42,10 @@
     font-weight: bold;
   }
   a.main {
-    flex-grow: 8;
+    flex-grow: 2;
     min-width: 0;
  }
   a.comment {
-    flex-grow: 1;
     align-items: center;
     display: flex;
     flex-direction: column;
