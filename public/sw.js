@@ -1,6 +1,7 @@
 const cacheName = 'static-cache';
 const assets = [
     '/',
+    'index.html',
     'bundle.css',
     'icono.min.css',
     'style.css',
