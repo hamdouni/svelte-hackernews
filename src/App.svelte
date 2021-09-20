@@ -125,7 +125,7 @@
     cursor: pointer;
   }
   button:active, button.active {
-    background-color: #009975;
-    color: #373a38;
+    background-color: var(--bg-color);
+    color: var(--text-color);
   }
 </style>

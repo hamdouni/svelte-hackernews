@@ -1,4 +1,5 @@
-const cacheName = 'static-cache';
+const version = '0.0.43';
+const cacheName = 'static-cache-'+version;
 const assets = [
     '/',
     'index.html',
@@ -9,6 +10,7 @@ const assets = [
 ];
 
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(cacheName)
       .then(cache => cache.addAll(assets))
@@ -25,4 +27,14 @@ self.addEventListener('fetch', function (event) {
         return fetch(event.request);
       })
   );
+});
+
+// clearing cache
+self.addEventListener('activate', (e) => {
+  e.waitUntil(caches.keys().then((keyList) => {
+    return Promise.all(keyList.map((key) => {
+      if (key === cacheName) { return; }
+      return caches.delete(key);
+    }))
+  }));
 });

@@ -1,5 +1,6 @@
 :root {
-    --text-color: #4a4a4a;
+    --text-color: #373a38;
+    --bg-color: #cce6ff;
 }
 
 * {
@@ -18,4 +19,27 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+}
+
+/* Manage app updates */
+#update {
+    transition: ease 0.5s;
+    visibility: hidden;
+    padding: 0;
+    height: 0;
+    z-index: 1;
+    width: 300px;
+    margin: 0 auto;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#update.show {
+    visibility: visible;
+    padding: 16px;
+    height: 65px;
+    z-index: 99999;
 }
