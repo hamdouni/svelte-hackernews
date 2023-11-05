@@ -1,12 +1,10 @@
-const version = '0.1.1';
+const version = '0.1.3';
 const cacheName = 'static-cache-'+version;
 const assets = [
     '/',
     'index.html',
-    'bundle.css',
-    'icono.min.css',
     'style.css',
-    'bundle.js',
+    'app.js',
 ];
 
 self.addEventListener('install', event => {

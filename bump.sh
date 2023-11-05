@@ -27,6 +27,5 @@ echo $INPUT_STRING > $VERSIONFILE
 echo "Will change version in service worker"
 sed -i "s|const version = '.*';|const version = '$INPUT_STRING';|g" public/sw.js
 
-git add $VERSIONFILE
-git commit -m "$INPUT_STRING"
+git commit -a -m "$INPUT_STRING"
 git tag -a -m "Tagging version $INPUT_STRING" "v$INPUT_STRING"

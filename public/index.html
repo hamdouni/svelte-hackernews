@@ -9,21 +9,19 @@
     <title>Svelte app</title>
 
     <link rel='manifest' href='manifest.json'>
-    <link rel='stylesheet' href='bundle.css'>
-    <link rel='stylesheet' href='icono.min.css'>
     <link rel="stylesheet" href="style.css">
 
     <!-- apple -->
     <link rel="apple-touch-icon" href="icon-192.png">
     <script src='pwa.js' defer></script>
-    <script src='bundle.js' defer></script>
+	<script defer src="app.js" type="module"></script>
 </head>
 
 <body>
     <div id="update">
         A new version of this app is available. Click REFRESH to update.
     </div>
-    <div id="app"></div>
+	<hacker-news></hacker-news>
 </body>
 
 </html>
