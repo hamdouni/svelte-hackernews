@@ -16,23 +16,23 @@
 		var url = `https://node-hnapi.herokuapp.com/` + tag + `?page=` + page;
 		fetch(url)
 			.then((r) => r.json())
-			.then((data) => news = data );
+			.then((data) => (news = data));
 		last = new Date();
-	}
+	};
 	let changetag = (t) => {
 		tag = t;
 		reload();
-	}
-	let next = () => page++; 
+	};
+	let next = () => page++;
 	let prev = () => {
 		if (page > 1) {
 			page--;
 		}
-	}
+	};
 	let reload = () => {
 		page = 1;
 		getpage(page);
-	}
+	};
 
 	$: getpage(page);
 </script>
@@ -154,12 +154,13 @@
 	footer {
 		bottom: 0;
 	}
-	header section.toolbar {
+	section.toolbar,
+	section.toolbar {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 	}
-	header section.toolbar button {
+	section.toolbar button {
 		width: 100%;
 	}
 	header h1 {
@@ -176,10 +177,6 @@
 		justify-content: end;
 		align-items: center;
 	}
-	footer > section > .toolbar button {
-		font-size: 1.5rem;
-		padding: 0.5rem 1.5rem;
-	}
 	main > section {
 		padding: 1.5rem 0;
 	}
@@ -187,7 +184,8 @@
 		border: 0;
 		background-color: #454d66;
 		color: #fff;
-		padding: 16px 10px;
+		line-height: 1rem;
+		padding: 0.5rem 1rem;
 		cursor: pointer;
 	}
 	button:active,
