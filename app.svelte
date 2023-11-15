@@ -9,7 +9,7 @@
 	let page = 1;
 	let last = new Date();
 
-	$: lasttime = last.toLocaleDateString() + " " + last.toLocaleTimeString();
+	$: lasttime = last.toLocaleTimeString();
 
 	let getpage = (page) => {
 		news = [];
@@ -57,8 +57,8 @@
 						/>
 					</svg>
 					HN Reader
-					<span>at {lasttime}</span>
 				</h1>
+				<span>at {lasttime}</span>
 			</section>
 			<section class="toolbar">
 				{#each tags as t}
@@ -135,6 +135,11 @@
 {/if}
 
 <style>
+	svg {
+		width: 1em;
+		height: 1em;
+		cursor: pointer;
+	}
 	main {
 		max-width: 1024px;
 		width: 100%;
@@ -159,13 +164,16 @@
 		flex-direction: row;
 		justify-content: space-between;
 	}
-	section.toolbar button {
-		width: 100%;
+	header section {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 	}
 	header h1 {
-		font-size: 1.2rem;
+		font-size: 1.5rem;
 		padding: 0;
-		margin: 0;
+		margin: 1rem 0.5rem;
 	}
 	header h1 span {
 		font-weight: normal;
@@ -185,18 +193,13 @@
 		color: #fff;
 		padding: 0.5rem 1rem;
 		cursor: pointer;
+		font-size: 1.25rem;
 	}
 	footer button {
 		line-height: 0;
-		font-size: 1.25rem;
 	}
 	button.active {
 		background-color: var(--bg-color);
 		color: var(--text-color);
-	}
-	svg {
-		width: 1em;
-		height: 1em;
-		cursor: pointer;
 	}
 </style>
