@@ -1,12 +1,13 @@
 import * as esbuild from 'esbuild';
 import sveltePlugin from 'esbuild-svelte';
 
+const dir = './public';
 const host = "localhost";
 const port = 5000;
 const isWatch = process.argv.includes('-w');
 
-let baseConfig = {
-	outdir: 'public',
+let base = {
+	outdir: dir,
 	entryPoints: ['./app.svelte'],
 	bundle: true,
 	format: 'esm',
@@ -16,28 +17,25 @@ let baseConfig = {
 		})
 	],
 };
-let devConfig = {
-	...baseConfig,
+let dev = {
+	...base,
 	banner: {
 		js: `new EventSource("http://${host}:${port}/esbuild").addEventListener("change",()=>location.reload())`,
 	},
 	logLevel: 'info',
 }
-let prodConfig = {
-	...baseConfig,
+let prod = {
+	...base,
 	minify: true,
 	sourcemap: true,
 }
 
-if (isWatch) {
-	// baseConfig.banner = {
-	// 	js: `new EventSource("http://${host}:${port}/esbuild").addEventListener("change",()=>location.reload())`,
-	// };
-	// baseConfig.logLevel = 'info';
-	let ctx = await esbuild.context(devConfig);
-	await ctx.watch();
-	await ctx.serve({ servedir: './public/', port: port, host: host });
-} else {
-	await esbuild.build(prodConfig);
+if (!isWatch) {
+	await esbuild.build(prod);
+	process.exit(0);
 }
+
+let ctx = await esbuild.context(dev);
+await ctx.watch();
+await ctx.serve({ servedir: dir, port: port, host: host });
 
