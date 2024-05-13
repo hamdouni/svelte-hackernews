@@ -5,13 +5,13 @@
 
 	let news;
 	let tag = "news";
-	let tags = ["news", "ask", "newest", "best"];
+	let tags = ["news", "ask", "newest", "best"];  // tags to show
+	let filtered = ["YC S", "YC W", "Launch HN" ]; // word to filter from article title results
 	let page = 1;
 	let last = new Date();
 
 	$: lasttime = last.toLocaleTimeString();
 
-	let filtered = ["YC S", "YC W", "Launch HN" ];
 	let getpage = (page) => {
 		news = [];
 		var url = `https://node-hnapi.herokuapp.com/` + tag + `?page=` + page;
