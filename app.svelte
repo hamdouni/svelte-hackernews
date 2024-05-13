@@ -11,12 +11,20 @@
 
 	$: lasttime = last.toLocaleTimeString();
 
+	let filtered = ["YC S", "YC W", "Launch HN" ];
 	let getpage = (page) => {
 		news = [];
 		var url = `https://node-hnapi.herokuapp.com/` + tag + `?page=` + page;
 		fetch(url)
 			.then((r) => r.json())
-			.then((data) => (news = data));
+			.then((data) => {
+				news = data.filter((item) => {
+					let f = filtered.filter( (word) => {
+						return item.title.includes(word); 
+					} );
+					return ( f.length == 0 );
+				});
+			});
 		last = new Date();
 	};
 	let changetag = (t) => {
