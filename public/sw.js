@@ -1,4 +1,4 @@
-const version = '0.2';
+const version = '0.3';
 const cacheName = 'static-cache-'+version;
 const assets = [
     '/',

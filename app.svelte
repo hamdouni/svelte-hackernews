@@ -187,6 +187,9 @@
 		font-weight: normal;
 		font-size: 0.8em;
 	}
+	header span {
+		margin: 1rem 0.5rem;
+	}
 	footer > section > .toolbar {
 		display: flex;
 		justify-content: end;
